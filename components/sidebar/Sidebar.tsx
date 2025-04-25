@@ -13,6 +13,7 @@ import Logo from "../logo/Logo"
 import { useSidebarStore } from "@/store/useSidebarStore"
 import { NavItemProps, SettingsItemProps, SidebarContentProps } from "@/types/sidebar"
 import { DESKTOP_SIDEBAR_WIDTHS, MOBILE_SIDEBAR_WIDTH } from "@/constants/responsiveness"
+import { authRoutes } from "@/constants/routes"
 
 // Components
 const NavItem: FC<NavItemProps> = ({ item, isActive, isCollapsed }) => (
@@ -138,6 +139,11 @@ const SidebarContent: FC<SidebarContentProps> = ({
 export const Sidebar: FC = () => {
     const pathname = usePathname()
     const { isOpen, isCollapsed, toggleOpen, toggleCollapsed } = useSidebarStore()
+
+    // Hide sidebar on auth routes
+    if (authRoutes.includes(pathname)) {
+        return null;
+    }
 
     return (
         <>
