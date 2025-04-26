@@ -1,6 +1,8 @@
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 interface ProjectCardProps {
+    id: string;
     title: string;
     description: string;
     status: 'active' | 'planning' | 'completed' | 'paused';
@@ -41,6 +43,7 @@ const statusConfig = {
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
+    id,
     title,
     description,
     status,
@@ -48,10 +51,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     tags,
     lastUpdated,
 }) => {
+    const router = useRouter();
     const config = statusConfig[status];
 
+    const handleClick = () => {
+        router.push(`/projects/${id}`);
+    };
+
     return (
-        <div className={`bg-white rounded-2xl p-6 shadow-md max-w-[600px] border-t-4 ${config.borderColor} h-[280px] flex flex-col`}>
+        <div 
+            onClick={handleClick}
+            className={`bg-white rounded-2xl p-6 shadow-md max-w-[600px] border-t-4 ${config.borderColor} h-[280px] flex flex-col cursor-pointer hover:shadow-lg transition-shadow duration-200`}
+        >
             <div>
                 <h2 className="text-2xl font-semibold mb-2">{title}</h2>
 

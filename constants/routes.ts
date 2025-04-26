@@ -2,6 +2,8 @@ const ROUTES = {
     HOME: "/",
     SIGN_IN: "/sign-in",
     SIGN_UP: "/sign-up",
+    PROJECTS: "/projects",
+    PROJECT_DETAILS: "/projects/:id",
 };
 
 export default ROUTES;
@@ -13,20 +15,16 @@ export default ROUTES;
 */
 export const publicRoutes = [
     "/",
-    // "/auth/new-verification"
 ];
 
 /**
 * An array of routes that are used for authentication
-* These routes will redirect logged in users to /settings
+* These routes will redirect logged in users to /dashboard
 * @type {string[]}
 */
 export const authRoutes = [
     "/sign-in",
     "/sign-up",
-    // "/auth/error",
-    // "/auth/reset",
-    // "/auth/new-password"
 ];
 
 /**

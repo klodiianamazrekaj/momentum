@@ -190,8 +190,10 @@ export default function RegisterPage() {
                                 </CardContent>
 
                                 <CardFooter className="flex flex-col pt-6">
-                                    <FormError message={error} />
-                                    <FormSuccess message={success} />
+                                    <div className="w-full mb-4">
+                                        <FormError message={error} />
+                                        <FormSuccess message={success} />
+                                    </div>
                                     <Button
                                         type="submit"
                                         className="w-full bg-[#00cc66] hover:bg-[#00cc66]/90 text-white font-semibold shadow-sm transition-colors py-6"
